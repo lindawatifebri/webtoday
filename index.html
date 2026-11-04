@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PT. Tahan Angin | Pelayaran Peti Kemas Tanjung Priok</title>
+<meta name="description" content="Profil PT. Tahan Angin: angkutan peti kemas domestik dan internasional, keagenan kapal, dan dokumentasi ekspor-impor dari Tanjung Priok. Situs contoh dengan data fiktif.">
+<meta name="theme-color" content="#0B3C5D">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PT. Tahan Angin | Pelayaran Peti Kemas">
+<meta property="og:description" content="Tetap andal dalam kondisi apa pun. Angkutan peti kemas, keagenan kapal, dan dokumentasi ekspor-impor.">
+<meta property="og:locale" content="id_ID">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Saira+Stencil+One&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: laut interaktif di hero, lalu lembar kerja pelaut (lembar plot, rencana muat, buku log) dengan judul di kolom kiri. */
+:root{
+  --bg:#EDF3F5; --surface:#FFFFFF; --ink:#0C2A3A; --muted:#47616F; --line:#C3D2D8;
+  --band:#0B3C5D; --band-ink:#EAF4F8; --band-muted:#B5CFDB;
+  --signal:#BF3A0B; --sea:#0B6F78;
+  --c1:#0F7C80; --c2:#D3991C; --c3:#B5342A; --c4:#1F6FA8; --empty:#D5E0E4;
+  --hero-ink:#FFFFFF; --hero-soft:#DCEBF2; --hero-panel:rgba(5,26,38,.78); --hero-accent:#FF8A57; --hero-line:rgba(255,255,255,.28);
+  --display:"Saira Stencil One","Impact","Arial Narrow",sans-serif;
+  --head:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",Consolas,monospace;
+  --gutter-l:max(16px,env(safe-area-inset-left,0px)); --gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#071D2A; --surface:#0D2B3B; --ink:#E7F1F4; --muted:#A1B9C5; --line:#264B5D;
+  --band:#0E4465; --band-ink:#EEF7FA; --band-muted:#BCD5E0;
+  --signal:#FF8A57; --sea:#4CC3C9;
+  --c1:#2BA5A8; --c2:#E3AE3A; --c3:#D9574B; --c4:#4C9BD3; --empty:#1B3D4E;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#071D2A; --surface:#0D2B3B; --ink:#E7F1F4; --muted:#A1B9C5; --line:#264B5D;
+  --band:#0E4465; --band-ink:#EEF7FA; --band-muted:#BCD5E0;
+  --signal:#FF8A57; --sea:#4CC3C9;
+  --c1:#2BA5A8; --c2:#E3AE3A; --c3:#D9574B; --c4:#4C9BD3; --empty:#1B3D4E;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 18px/1.6 var(--body);margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--band)}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0;padding:0}
+ul,ol{list-style:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1240px;margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.skip{position:absolute;left:-999px;top:0;z-index:40;background:var(--surface);color:var(--ink);padding:10px 16px}
+.skip:focus{left:16px;top:8px}
+.mono{font-family:var(--mono);font-size:.78rem;letter-spacing:.02em}
+
+/* Catatan & navigasi */
+.note{background:var(--bg);color:var(--muted);font-size:.85rem;line-height:1.4}
+.note .wrap{padding-block:7px}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--band);color:var(--band-ink)}
+.nav .wrap{display:flex;align-items:center;gap:28px;padding-block:10px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:400 1.15rem/1 var(--display);white-space:nowrap;letter-spacing:.02em}
+.brand svg{width:30px;height:30px;flex:none}
+.nav ul{display:flex;gap:4px;margin-left:auto;overflow-x:auto;min-width:0;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav li a{display:block;padding:8px 11px;font:600 1.05rem/1 var(--head);letter-spacing:.03em;text-decoration:none;white-space:nowrap;border-radius:3px}
+.nav li a:hover{background:rgba(255,255,255,.14)}
+.nav :focus-visible{outline-color:var(--band-ink)}
+
+/* Hero */
+.hero{position:relative;color:var(--hero-ink);background:#0E5E8C;overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-in{position:relative;display:flex;flex-direction:column;padding-top:clamp(36px,5vw,64px);padding-bottom:clamp(20px,3vw,36px)}
+.kicker{font:600 clamp(1.05rem,1.6vw,1.3rem)/1.2 var(--head);letter-spacing:.09em;text-transform:uppercase;color:var(--hero-soft)}
+h1{font:400 clamp(3.7rem,14.4vw,12.4rem)/.92 var(--display);letter-spacing:-.005em;margin-top:6px}
+.tagline{font:500 clamp(1.5rem,3vw,2.5rem)/1.12 var(--head);max-width:24em;margin-top:12px;text-wrap:balance}
+.lede{max-width:36em;margin-top:10px;color:var(--hero-soft)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-block;padding:11px 20px;font:700 1.12rem/1 var(--head);letter-spacing:.04em;text-decoration:none;border-radius:3px;border:2px solid var(--hero-ink);color:var(--hero-ink)}
+.btn:hover{background:rgba(255,255,255,.16)}
+.btn.solid{background:var(--hero-ink);color:#0B3C5D}
+.btn.solid:hover{background:var(--hero-soft)}
+.hero :focus-visible{outline-color:var(--hero-ink)}
+.gauge{width:min(100%,440px);margin-top:28px;padding:16px 18px;background:var(--hero-panel);border:1px solid var(--hero-line);border-radius:4px;-webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+.gauge label{display:block;font:600 1.05rem/1.2 var(--head);letter-spacing:.05em}
+.read{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;margin-top:8px}
+.read output{font:400 3.3rem/1 var(--display);color:var(--hero-accent);min-width:1.25em;text-align:center;font-variant-numeric:tabular-nums}
+.read strong{display:block;font:700 1.4rem/1.1 var(--head)}
+.read span{display:block;font-family:var(--mono);font-size:.76rem;line-height:1.5;color:var(--hero-soft);margin-top:2px}
+input[type=range]{width:100%;height:30px;margin:8px 0 0;accent-color:var(--hero-accent);cursor:ew-resize;display:block}
+.ticks{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.68rem;color:var(--hero-soft);padding-inline:5px}
+.gauge small{display:block;margin-top:8px;font-size:.8rem;line-height:1.35;color:var(--hero-soft)}
+
+/* Pola section */
+section{padding-block:clamp(56px,8vw,104px);scroll-margin-top:56px}
+.sec{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(24px,5vw,72px)}
+h2{font:700 clamp(2.4rem,5vw,4rem)/1 var(--head);letter-spacing:.005em;text-wrap:balance}
+.intro{color:var(--muted);margin-top:14px;max-width:32em}
+.sec>*{min-width:0}
+.rule{border-top:1px solid var(--line)}
+
+/* Kinerja */
+.band{background:var(--band);color:var(--band-ink)}
+.band .intro{color:var(--band-muted)}
+.perf{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,4vw,56px);align-items:start}
+.waffle{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;max-width:330px}
+.waffle i{display:block;aspect-ratio:2/1;background:var(--band-ink);border-radius:1px}
+.waffle i.off{background:transparent;box-shadow:inset 0 0 0 1px var(--band-muted)}
+.big{font:400 clamp(4rem,8vw,6.2rem)/1 var(--display);margin-top:14px}
+.perf figcaption{color:var(--band-muted);margin-top:4px;max-width:21em}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.stats>div{padding-block:16px;border-top:1px solid rgba(255,255,255,.26);padding-right:14px}
+.stats dt{font:600 1.05rem/1.2 var(--head);letter-spacing:.04em;color:var(--band-muted)}
+.stats dd{font:700 clamp(2rem,3.6vw,2.9rem)/1.1 var(--head);font-variant-numeric:tabular-nums;margin-top:2px}
+.stats dd small{font-size:.5em;font-weight:600;letter-spacing:.02em}
+
+/* Layanan */
+.svc li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 28px;padding-block:22px;border-top:1px solid var(--line)}
+.svc li:last-child{border-bottom:1px solid var(--line)}
+.svc h3{font:700 clamp(1.55rem,2.5vw,2rem)/1.08 var(--head)}
+.svc p{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.tags span{font-family:var(--mono);font-size:.74rem;line-height:1;padding:5px 7px;border:1px solid var(--line);border-radius:2px;color:var(--ink)}
+
+/* Rute */
+.routes-grid{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:24px;margin-top:clamp(24px,4vw,44px);align-items:start}
+.routes-grid>*{min-width:0}
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:3px}
+.sheet svg{display:block;width:100%;height:auto}
+.grat{stroke:var(--line);stroke-width:1;fill:none}
+.grat.eq{stroke:var(--muted);stroke-dasharray:6 6}
+.gl{fill:var(--muted);font:400 15px var(--mono)}
+.route{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;transition:opacity .2s}
+.route.dom{stroke:var(--sea)}
+.route.int{stroke:var(--signal);stroke-dasharray:.012 .012}
+.route.dim{opacity:.13}
+.route.on{stroke-width:6;stroke-dasharray:1;animation:draw 1s ease-out both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.port{fill:var(--surface);stroke:var(--ink);stroke-width:3;transition:opacity .2s}
+.pl{fill:var(--ink);font:700 27px var(--head);letter-spacing:.01em;paint-order:stroke;stroke:var(--surface);stroke-width:6px;transition:opacity .2s}
+.dimp{opacity:.25}
+.sheet-note{padding:9px 13px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;line-height:1.4}
+.rlist{display:flex;flex-direction:column;gap:6px}
+.rlist button{display:block;width:100%;text-align:left;background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:10px 12px;font:600 1.17rem/1.2 var(--head);cursor:pointer}
+.rlist button small{display:block;font:400 .72rem/1.4 var(--mono);color:var(--muted);margin-bottom:2px}
+.rlist button:hover{border-color:var(--ink)}
+.rlist button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rlist button[aria-pressed=true] small{color:var(--bg)}
+
+/* Armada */
+.fleet-sum{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline;margin-bottom:6px;font-family:var(--mono);font-size:.82rem;color:var(--muted)}
+.ship{display:grid;grid-template-columns:190px minmax(0,1fr) 88px;gap:6px 16px;align-items:center;padding-block:13px;border-top:1px solid var(--line)}
+.ship b{font:700 1.27rem/1.1 var(--head);display:block}
+.ship .yr{font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.stack{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
+.stack i{display:block;height:24px;border-radius:1px;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.2) 0 1px,transparent 1px 5px)}
+.stack i.half{width:50%}
+.cap{font:700 1.2rem/1.1 var(--head);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cargo-h{font:700 1.45rem/1.1 var(--head);margin-top:30px;margin-bottom:6px}
+.cargo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 28px}
+.cargo li{display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding-block:11px;border-top:1px solid var(--line)}
+.cargo b{font:700 1.27rem/1.1 var(--head);display:block}
+
+/* Sejarah */
+.log li{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;padding-block:13px;border-top:1px solid var(--line);align-items:baseline}
+.log time{font:400 1.6rem/1 var(--display);color:var(--signal);font-variant-numeric:tabular-nums}
+
+/* Tentang */
+.vision{font:600 clamp(1.9rem,4vw,3.3rem)/1.08 var(--head);max-width:23em;text-wrap:balance}
+.flags{display:flex;flex-wrap:wrap;gap:6px;margin-top:clamp(24px,4vw,40px);align-items:flex-end}
+.flags span{display:flex;flex-direction:column;align-items:center;gap:3px;font-family:var(--mono);font-size:.72rem;color:var(--band-muted)}
+.flags svg{display:block;width:clamp(25px,6.4vw,58px);height:auto}
+.flags .sp{width:clamp(6px,1.6vw,20px)}
+.flagcap{margin-top:9px;color:var(--band-muted);font-size:.88rem}
+.about{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,5vw,64px)}
+.about>*{min-width:0}
+.about h3{font:700 1.65rem/1.1 var(--head);margin-bottom:10px}
+.mis{counter-reset:m}
+.mis li{counter-increment:m;display:grid;grid-template-columns:30px minmax(0,1fr);padding-block:10px;border-top:1px solid var(--line)}
+.mis li::before{content:counter(m);font:400 1.2rem/1.4 var(--display);color:var(--signal)}
+.val li{padding-block:10px;border-top:1px solid var(--line)}
+.val b{font:700 1.27rem/1.2 var(--head);display:block}
+.val span{color:var(--muted)}
+.org{display:grid;gap:10px;margin-top:clamp(40px,6vw,72px)}
+.org h3{font:700 1.65rem/1.1 var(--head)}
+.tier{display:grid;gap:10px}
+.tier.t3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tier.t2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.person{padding:12px 14px;background:var(--surface);border:1px solid var(--line);border-radius:3px}
+.person small{display:block;font:400 .74rem/1.4 var(--mono);color:var(--muted)}
+.person b{font:700 1.27rem/1.2 var(--head)}
+.lists{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(28px,4vw,56px);margin-top:clamp(40px,6vw,72px)}
+.lists>*{min-width:0}
+.lists h3{font:700 1.65rem/1.1 var(--head);margin-bottom:10px}
+.lists li{padding-block:9px;border-top:1px solid var(--line);line-height:1.35}
+.lists li span{display:block;color:var(--muted);font-size:.9rem}
+.lists dl>div{padding-block:9px;border-top:1px solid var(--line);line-height:1.35}
+.lists dt{color:var(--muted);font-size:.84rem}
+
+/* Kontak */
+.contact{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px)}
+.contact>*{min-width:0}
+.contact address{font-style:normal;font-size:1.2rem;line-height:1.45;margin-top:14px}
+.line-c{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 16px;padding-block:13px;border-top:1px solid rgba(255,255,255,.26)}
+.line-c dt{font-size:.84rem;color:var(--band-muted);line-height:1.3}
+.line-c dd{font:700 clamp(1.3rem,2.6vw,1.8rem)/1.2 var(--head);overflow-wrap:anywhere}
+.copy{background:transparent;color:var(--band-ink);border:1px solid var(--band-muted);border-radius:3px;padding:7px 12px;font:600 .98rem/1 var(--head);letter-spacing:.03em;cursor:pointer;min-width:74px}
+.copy:hover{background:rgba(255,255,255,.14)}
+.band :focus-visible{outline-color:var(--band-ink)}
+footer{padding-block:24px;color:var(--muted);font-size:.88rem;line-height:1.45}
+footer .wrap{display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between}
+
+@media (max-width:900px){
+  .sec,.routes-grid,.perf,.contact{grid-template-columns:minmax(0,1fr)}
+  .rlist{flex-direction:column}
+}
+@media (max-width:720px){
+  body{font-size:17px}
+  .nav .wrap{flex-direction:column;align-items:flex-start;gap:4px;padding-block:8px 4px}
+  .nav ul{margin-left:-11px;width:calc(100% + 11px)}
+  .gauge{margin-top:178px;width:100%}
+  .svc li{grid-template-columns:minmax(0,1fr)}
+  .ship{grid-template-columns:minmax(0,1fr) auto}
+  .ship .stack{grid-column:1/-1;grid-row:2}
+  .stack i{height:19px}
+  .cargo,.about,.lists{grid-template-columns:minmax(0,1fr)}
+  .tier.t3{grid-template-columns:minmax(0,1fr)}
+  .tier.t2{grid-template-columns:minmax(0,1fr)}
+  .pl{font-size:36px}
+  .gl{font-size:21px}
+  .log li{grid-template-columns:70px minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .route.on{animation:none}
+}
+</style>
+
+</head>
+<body>
+<a class="skip" href="#kinerja">Lewati ke isi</a>
+<div class="note"><div class="wrap">Situs contoh untuk latihan. Perusahaan, nama, angka, alamat, dan kontak di halaman ini seluruhnya fiktif.</div></div>
+
+<nav class="nav" aria-label="Navigasi utama"><div class="wrap">
+  <a class="brand" href="#top">
+    <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="3.5"/><path d="M0 20h40" stroke="currentColor" stroke-width="3.5"/></svg>
+    Tahan Angin
+  </a>
+  <ul>
+    <li><a href="#kinerja">Kinerja</a></li>
+    <li><a href="#layanan">Layanan</a></li>
+    <li><a href="#rute">Rute</a></li>
+    <li><a href="#armada">Armada</a></li>
+    <li><a href="#sejarah">Sejarah</a></li>
+    <li><a href="#tentang">Tentang</a></li>
+    <li><a href="#kontak">Kontak</a></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top">
+  <canvas id="sea" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <p class="kicker">Pelayaran nasional · Tanjung Priok · Sejak 2005</p>
+    <h1>Tahan Angin</h1>
+    <p class="tagline">Tetap andal dalam kondisi apa pun.</p>
+    <p class="lede">Kami melayani angkutan peti kemas domestik dan internasional, keagenan kapal, serta dokumentasi ekspor-impor.</p>
+    <div class="cta"><a class="btn solid" href="#rute">Lihat rute</a><a class="btn" href="#kontak">Hubungi kami</a></div>
+    <div class="gauge">
+      <label for="beaufort">Coba ubah kekuatan angin</label>
+      <div class="read" aria-live="polite">
+        <output id="bf-num" for="beaufort">4</output>
+        <div><strong id="bf-name">Angin sedang</strong><span id="bf-data">20–28 km/jam · gelombang ±1 m</span></div>
+      </div>
+      <input type="range" id="beaufort" min="0" max="12" step="1" value="4" aria-label="Skala Beaufort, 0 sampai 12">
+      <div class="ticks" aria-hidden="true"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span></div>
+      <small>Ilustrasi skala Beaufort. Keputusan berlayar tetap mengikuti prosedur keselamatan.</small>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="band" id="kinerja"><div class="wrap sec">
+  <div>
+    <h2>Kinerja tahun 2025</h2>
+    <p class="intro">Komitmen paling mudah diukur dari jadwal. Inilah catatan kami selama satu tahun pelayaran.</p>
+  </div>
+  <div class="perf">
+    <figure>
+      <div class="waffle" id="waffle" role="img" aria-label="92 dari 100 kotak terisi"></div>
+      <p class="big">92%</p>
+      <figcaption>ketepatan jadwal: 92 dari setiap 100 jadwal tepat waktu.</figcaption>
+    </figure>
+    <dl class="stats">
+      <div><dt>Volume angkut</dt><dd>145.000 <small>TEU</small></dd></div>
+      <div><dt>Pelayaran</dt><dd>410 <small>voyage</small></dd></div>
+      <div><dt>Pendapatan</dt><dd>Rp 820 <small>miliar</small></dd></div>
+      <div><dt>Laba bersih</dt><dd>Rp 64 <small>miliar</small></dd></div>
+      <div><dt>Karyawan darat</dt><dd>168 <small>orang</small></dd></div>
+      <div><dt>Awak kapal</dt><dd>210 <small>orang</small></dd></div>
+    </dl>
+  </div>
+</div></section>
+
+<section id="layanan"><div class="wrap sec">
+  <div>
+    <h2>Layanan utama</h2>
+    <p class="intro">Dari perencanaan muatan sampai dokumen pengapalan, kami menjaga barang Anda tiba tanpa kendala di pelabuhan tujuan.</p>
+  </div>
+  <ul class="svc">
+    <li><h3>Angkutan peti kemas</h3><div><p>Pengiriman rute domestik dan Asia, untuk muatan satu kontainer penuh maupun muatan gabungan.</p><div class="tags"><span>FCL</span><span>LCL</span></div></div></li>
+    <li><h3>Keagenan kapal</h3><div><p>Pengurusan kedatangan, sandar, dan keberangkatan kapal di terminal.</p><div class="tags"><span>Kedatangan</span><span>Sandar</span><span>Keberangkatan</span></div></div></li>
+    <li><h3>Dokumentasi ekspor-impor</h3><div><p>Penerbitan dan pemeriksaan dokumen pengapalan beserta dokumen pendukungnya.</p><div class="tags"><span>B/L</span><span>Manifest</span></div></div></li>
+    <li><h3>Koordinasi bongkar muat</h3><div><p>Perencanaan muatan dan koordinasi dengan terminal peti kemas.</p><div class="tags"><span>Perencanaan muatan</span><span>Terminal</span></div></div></li>
+  </ul>
+</div></section>
+
+<section class="rule" id="rute"><div class="wrap">
+  <h2>Rute pelayaran</h2>
+  <p class="intro">Tiga rute domestik dan dua rute internasional. Pilih satu rute untuk melihat urutan singgahnya.</p>
+  <div class="routes-grid">
+    <div class="sheet">
+      <svg id="chart" role="img" aria-label="Lembar plot pelabuhan rute PT. Tahan Angin, dari Belawan dan Port Klang di barat sampai Makassar di timur"></svg>
+      <p class="sheet-note">Pelabuhan diplot menurut koordinatnya. Garis menunjukkan urutan singgah, bukan lintasan kapal sebenarnya.</p>
+    </div>
+    <div class="rlist" id="rlist"></div>
+  </div>
+</div></section>
+
+<section class="rule" id="armada"><div class="wrap sec">
+  <div>
+    <h2>Armada 8 kapal</h2>
+    <p class="intro">Enam kapal kontainer dan dua kapal general cargo.</p>
+  </div>
+  <div>
+    <div class="fleet-sum"><span>Total kapal kontainer: 6.050 TEU</span><span>1 kotak = 100 TEU</span></div>
+    <div id="fleet"></div>
+    <h3 class="cargo-h">General cargo</h3>
+    <ul class="cargo">
+      <li><div><b>KM Nusantara Jaya</b><span class="mono">Dibuat 2012</span></div><span class="cap">8.000 DWT</span></li>
+      <li><div><b>KM Arus Selatan</b><span class="mono">Dibuat 2009</span></div><span class="cap">6.500 DWT</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="rule" id="sejarah"><div class="wrap sec">
+  <div>
+    <h2>Dari 12 karyawan ke 8 kapal</h2>
+    <p class="intro">Kami memulai sebagai agen kapal di Jakarta. Beginilah perjalanan kami sejak itu.</p>
+  </div>
+  <ol class="log">
+    <li><time>2005</time><span>Berdiri di Jakarta sebagai agen kapal dengan 12 karyawan.</span></li>
+    <li><time>2009</time><span>Membeli kapal peti kemas pertama, KM Tahan Angin 1.</span></li>
+    <li><time>2013</time><span>Membuka cabang Surabaya dan Semarang.</span></li>
+    <li><time>2017</time><span>Mulai melayani rute internasional ke Singapura dan Port Klang.</span></li>
+    <li><time>2020</time><span>Meluncurkan sistem pelacakan peti kemas berbasis online.</span></li>
+    <li><time>2024</time><span>Membuka cabang Medan dan Makassar. Armada bertambah menjadi 8 kapal.</span></li>
+    <li><time>2026</time><span>Melayani lebih dari 300 pelanggan aktif.</span></li>
+  </ol>
+</div></section>
+
+<section class="band" id="tentang"><div class="wrap">
+  <p class="vision">Menjadi perusahaan pelayaran terpercaya di Indonesia yang menghubungkan pelabuhan nusantara dengan pasar dunia.</p>
+  <div class="flags" id="flags" role="img" aria-label="Tulisan TAHAN ANGIN dalam bendera isyarat maritim"></div>
+  <p class="flagcap">Nama kami dalam bendera isyarat maritim internasional.</p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="about">
+    <div><h3>Misi</h3><ol class="mis">
+      <li><span>Memberikan layanan pengiriman yang tepat waktu, aman, dan efisien.</span></li>
+      <li><span>Menjaga ketepatan dokumen pengapalan agar barang tiba tanpa kendala di pelabuhan tujuan.</span></li>
+      <li><span>Membangun kemitraan jangka panjang dengan pelanggan, terminal, dan agen.</span></li>
+      <li><span>Mengutamakan keselamatan kerja dan kelestarian lingkungan laut.</span></li>
+    </ol></div>
+    <div><h3>Nilai perusahaan</h3><ul class="val">
+      <li><b>Tangguh</b><span>Tetap berlayar dan melayani di segala kondisi.</span></li>
+      <li><b>Amanah</b><span>Menjaga muatan dan kepercayaan pelanggan.</span></li>
+      <li><b>Teliti</b><span>Memastikan setiap dokumen dan muatan tercatat benar.</span></li>
+      <li><b>Cepat tanggap</b><span>Merespons kebutuhan pelanggan dengan sigap.</span></li>
+    </ul></div>
+  </div>
+
+  <div class="org">
+    <h3>Struktur organisasi</h3>
+    <div class="tier t2">
+      <div class="person"><small>Komisaris Utama</small><b>Ir. Darmawan Hadi</b></div>
+      <div class="person"><small>Direktur Utama</small><b>Hendra Wijaya Saputra</b></div>
+    </div>
+    <div class="tier t3">
+      <div class="person"><small>Direktur Operasional</small><b>Capt. Agus Prasetyo</b></div>
+      <div class="person"><small>Direktur Keuangan</small><b>Maya Lestari, S.E., Ak.</b></div>
+      <div class="person"><small>Direktur Komersial</small><b>Bayu Ramadhan</b></div>
+    </div>
+  </div>
+
+  <div class="lists">
+    <div><h3>Sertifikasi</h3><ul>
+      <li>ISO 9001:2015<span>Sistem Manajemen Mutu</span></li>
+      <li>ISO 45001:2018<span>Keselamatan dan Kesehatan Kerja</span></li>
+      <li>ISM Code<span>Untuk seluruh armada</span></li>
+      <li>Anggota INSA<span>Indonesian National Shipowners' Association</span></li>
+    </ul></div>
+    <div><h3>Pelanggan utama</h3><ul>
+      <li>PT. Sinar Pangan Nusantara<span>Makanan olahan</span></li>
+      <li>CV. Kopi Gunung Mas<span>Kopi ekspor</span></li>
+      <li>PT. Kayu Lestari Abadi<span>Furnitur ekspor</span></li>
+      <li>PT. Baja Prima Indah<span>Besi dan baja</span></li>
+    </ul></div>
+    <div><h3>Identitas perusahaan</h3><dl>
+      <div><dt>Nama resmi</dt><dd>PT. Tahan Angin Samudra</dd></div>
+      <div><dt>Tanggal berdiri</dt><dd>17 Maret 2005</dd></div>
+      <div><dt>Akta pendirian</dt><dd>No. 21, Notaris Fiktif Rina Kusuma, S.H.</dd></div>
+      <div><dt>Modal dasar</dt><dd>Rp 50.000.000.000</dd></div>
+    </dl></div>
+  </div>
+</div></section>
+
+<section class="band" id="kontak"><div class="wrap contact">
+  <div>
+    <h2>Kirim muatan bersama kami</h2>
+    <address>Gedung Bahari Lt. 7<br>Jl. Pelabuhan Raya No. 10<br>Tanjung Priok, Jakarta Utara 14310</address>
+    <p class="intro">Kantor cabang: Surabaya, Semarang, Medan (Belawan), dan Makassar.</p>
+  </div>
+  <dl>
+    <div class="line-c"><div><dt>Telepon</dt><dd id="c-tel">(021) 4300-7788</dd></div><button class="copy" type="button" id="copy-tel" data-t="c-tel">Salin</button></div>
+    <div class="line-c"><div><dt>Email</dt><dd id="c-mail">info@tahanangin.co.id</dd></div><button class="copy" type="button" id="copy-mail" data-t="c-mail">Salin</button></div>
+    <div class="line-c"><div><dt>Situs web</dt><dd id="c-web">www.tahanangin.co.id</dd></div><button class="copy" type="button" id="copy-web" data-t="c-web">Salin</button></div>
+  </dl>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 PT. Tahan Angin Samudra</span><span>Data fiktif untuk latihan dan simulasi.</span></div></footer>
+
+<script>
+(function(){
+  /* ---------- Data Beaufort ---------- */
+  var BF=[["Tenang","di bawah 1 km/jam · laut datar"],["Udara ringan","1–5 km/jam · gelombang ±0,1 m"],["Sepoi lemah","6–11 km/jam · gelombang ±0,2 m"],["Sepoi lembut","12–19 km/jam · gelombang ±0,6 m"],["Angin sedang","20–28 km/jam · gelombang ±1 m"],["Angin segar","29–38 km/jam · gelombang ±2 m"],["Angin kuat","39–49 km/jam · gelombang ±3 m"],["Mendekati badai","50–61 km/jam · gelombang ±4 m"],["Badai ringan","62–74 km/jam · gelombang ±5,5 m"],["Badai","75–88 km/jam · gelombang ±7 m"],["Badai kuat","89–102 km/jam · gelombang ±9 m"],["Badai hebat","103–117 km/jam · gelombang ±11,5 m"],["Badai dahsyat","118 km/jam ke atas · gelombang 14 m ke atas"]];
+
+  /* ---------- Laut di hero ---------- */
+  var cv=document.getElementById('sea'),ctx=cv.getContext('2d'),hero=document.getElementById('top'),gauge=document.querySelector('.gauge');
+  var slider=document.getElementById('beaufort');
+  var W=0,H=0,waterY=0,shipX=0,sc=1,f=4,target=4,t=0;
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var visible=true,running=false,last=0;
+  function hex(a,b,m){var o=[0,2,4].map(function(i){var x=parseInt(a.substr(i,2),16),y=parseInt(b.substr(i,2),16);return Math.round(x+(y-x)*m)});return 'rgb('+o.join(',')+')'}
+  function size(){
+    var r=hero.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
+    W=r.width;H=r.height;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);
+    var narrow=W<=720;
+    sc=narrow?Math.max(.62,W/640):Math.min(1.1,Math.max(.56,W/1300));
+    shipX=narrow?W*.5:W*.73;
+    waterY=narrow?(gauge.getBoundingClientRect().top-r.top-26):H*.78;
+    if(still)draw();
+  }
+  function amp(){return (1.2+56*Math.pow(f/12,1.7))*Math.min(1,sc+.1)}
+  function wave(x,l){
+    var k=2*Math.PI/((320+l*70)*Math.max(.7,sc)),w=.55+f*.08,p=l*1.9,a=amp()*(1-l*.1);
+    return a*(.62*Math.sin(k*x+w*t+p)+.28*Math.sin(2.3*k*x-.7*w*t+p*2)+.1*Math.sin(5.1*k*x+1.5*w*t+p));
+  }
+  function fillWave(l,base,color,foam){
+    ctx.beginPath();ctx.moveTo(0,H);
+    for(var x=0;x<=W+8;x+=8)ctx.lineTo(x,base+wave(x,l));
+    ctx.lineTo(W,H);ctx.closePath();ctx.fillStyle=color;ctx.fill();
+    if(foam>0){
+      ctx.beginPath();
+      for(var i=0;i<=W+8;i+=8){var y=base+wave(i,l);if(i===0)ctx.moveTo(i,y);else ctx.lineTo(i,y)}
+      ctx.strokeStyle='rgba(255,255,255,'+foam+')';ctx.lineWidth=1+f*.14;ctx.stroke();
+    }
+  }
+  var BOX=['#0F7C80','#D3991C','#B5342A','#1F6FA8','#E8EEF0','#D3991C','#1F6FA8','#B5342A','#0F7C80','#1F6FA8','#B5342A','#D3991C','#E8EEF0','#0F7C80','#1F6FA8','#D3991C','#B5342A','#0F7C80','#E8EEF0','#1F6FA8','#D3991C','#0F7C80','#B5342A','#1F6FA8','#0F7C80','#D3991C','#E8EEF0','#B5342A'];
+  function ship(base){
+    var L=340*sc,yb=wave(shipX+L/2,1),ys=wave(shipX-L/2,1),ym=wave(shipX,1);
+    var ang=Math.atan2(yb-ys,L)*.8,lift=(yb+ys+2*ym)/4;
+    ctx.save();ctx.translate(shipX,base+lift);ctx.rotate(ang);ctx.scale(sc,sc);
+    /* tumpukan kontainer */
+    var rows=[3,4,4,4,4,3,3,2],n=0;
+    rows.forEach(function(r,c){for(var j=0;j<r;j++){ctx.fillStyle=BOX[n++%BOX.length];ctx.fillRect(-100+c*33,-53-j*15,31.5,14)}});
+    /* anjungan */
+    ctx.fillStyle='#EAF1F3';ctx.fillRect(-172,-106,50,68);
+    ctx.fillStyle='#EAF1F3';ctx.fillRect(-180,-112,66,10);
+    ctx.fillStyle='#17384A';ctx.fillRect(-176,-101,58,5);
+    ctx.fillStyle='#B5342A';ctx.fillRect(-166,-132,16,22);
+    ctx.fillStyle='#17384A';ctx.fillRect(-166,-126,16,4);
+    /* lambung */
+    ctx.beginPath();ctx.moveTo(-190,-40);ctx.lineTo(182,-40);ctx.lineTo(196,-50);ctx.lineTo(172,16);ctx.lineTo(-182,16);ctx.closePath();ctx.fillStyle='#0D2230';ctx.fill();
+    ctx.beginPath();ctx.moveTo(-186,-4);ctx.lineTo(181,-4);ctx.lineTo(172,16);ctx.lineTo(-182,16);ctx.closePath();ctx.fillStyle='#A9301F';ctx.fill();
+    ctx.fillStyle='#FFFFFF';ctx.font='21px "Saira Stencil One", Impact, sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('TAHAN ANGIN',14,-22);
+    ctx.restore();
+  }
+  function draw(){
+    var m=f/12,s=Math.pow(m,1.15);
+    var g=ctx.createLinearGradient(0,0,0,waterY);
+    g.addColorStop(0,hex('0E5E8C','0A1720',s));
+    g.addColorStop(.6,hex('15709E','15262F',s));
+    g.addColorStop(1,hex('8FD0DF','3A4F59',s));
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    /* garis angin */
+    if(f>1.5){
+      ctx.strokeStyle='rgba(255,255,255,'+(.05+m*.17)+')';ctx.lineWidth=1;ctx.beginPath();
+      var cnt=Math.round(10+f*5),sp=70+f*95,len=26+f*16;
+      for(var i=0;i<cnt;i++){
+        var yy=((i*83.7)%1)*0+(i*97.3)%Math.max(1,waterY),xx=(((i*211.7+t*sp*(1+(i%3)*.2))%(W+200))+W+200)%(W+200)-100;
+        ctx.moveTo(xx,yy);ctx.lineTo(xx-len,yy+f*.5);
+      }
+      ctx.stroke();
+    }
+    var a=amp();
+    fillWave(0,waterY-6-a*.55,hex('1A7EA6','1E3844',s),m>.3?(m-.3)*.25:0);
+    ship(waterY);
+    fillWave(1,waterY+6,hex('0B5F88','122A36',s),m>.25?(m-.25)*.55:0);
+    fillWave(2,waterY+20+a*.55,hex('08486B','0A1B25',s),m>.2?(m-.2)*.7:0);
+    /* hujan */
+    if(f>7){
+      ctx.strokeStyle='rgba(220,235,245,'+((f-7)*.05)+')';ctx.lineWidth=1;ctx.beginPath();
+      for(var r=0;r<Math.round((f-7)*34);r++){
+        var rx=(((r*137.1+t*(-240-f*50))%(W+100))+W+100)%(W+100),ry=(((r*71.3+t*900)%(H+40))+H+40)%(H+40);
+        ctx.moveTo(rx,ry);ctx.lineTo(rx+f*1.5,ry-18);
+      }
+      ctx.stroke();
+    }
+  }
+  function frame(now){
+    if(!visible||still){running=false;return}
+    var dt=Math.min(.05,(now-last)/1000||0);last=now;t+=dt;
+    f+=(target-f)*Math.min(1,dt*2.4);
+    draw();requestAnimationFrame(frame);
+  }
+  function start(){if(!running&&!still&&visible){running=true;last=performance.now();requestAnimationFrame(frame)}}
+  function setForce(v){
+    target=v;
+    document.getElementById('bf-num').textContent=v;
+    document.getElementById('bf-name').textContent=BF[v][0];
+    document.getElementById('bf-data').textContent=BF[v][1];
+    if(still){f=v;draw()}
+  }
+  slider.addEventListener('input',function(){setForce(+slider.value)});
+  if('IntersectionObserver' in window){new IntersectionObserver(function(e){visible=e[0].isIntersecting;start()}).observe(hero)}
+  window.addEventListener('resize',size);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){size();draw()});
+  size();draw();start();
+
+  /* ---------- Blok 92 dari 100 ---------- */
+  var wf=document.getElementById('waffle'),h='';
+  for(var i=0;i<100;i++)h+='<i'+(i>=92?' class="off"':'')+'></i>';
+  wf.innerHTML=h;
+
+  /* ---------- Lembar plot rute ---------- */
+  var P={blw:["Belawan",3.78,98.69,"start",-30,44],pkg:["Port Klang",3.00,101.39,"middle",0,-22],sin:["Singapura",1.26,103.84,"start",20,9],jkt:["Jakarta",-6.10,106.88,"middle",0,46],srg:["Semarang",-6.95,110.42,"middle",0,-22],sub:["Surabaya",-7.20,112.73,"middle",0,46],bdj:["Banjarmasin",-3.32,114.59,"middle",0,-22],mak:["Makassar",-5.13,119.41,"middle",-10,-22]};
+  var R=[
+    {id:"d1",k:"dom",l:"Domestik",p:["jkt","sub","mak"]},
+    {id:"d2",k:"dom",l:"Domestik",p:["jkt","blw"]},
+    {id:"d3",k:"dom",l:"Domestik",p:["jkt","srg","bdj"]},
+    {id:"i1",k:"int",l:"Internasional",p:["jkt","sin","pkg"]},
+    {id:"i2",k:"int",l:"Internasional",p:["sub","sin"]}
+  ];
+  var S=38.46,MW=1000,MH=Math.round(15*S)+30;
+  function X(lon){return (lon-96)*S}
+  function Y(lat){return (6-lat)*S+6}
+  var svg=document.getElementById('chart');svg.setAttribute('viewBox','0 0 '+MW+' '+MH);
+  var o='';
+  [100,105,110,115,120].forEach(function(l){o+='<line class="grat" x1="'+X(l)+'" y1="0" x2="'+X(l)+'" y2="'+MH+'"/><text class="gl" x="'+(X(l)+5)+'" y="'+(MH-8)+'">'+l+'°BT</text>'});
+  [[5,'5°LU'],[0,'0° Khatulistiwa'],[-5,'5°LS']].forEach(function(a){o+='<line class="grat'+(a[0]===0?' eq':'')+'" x1="0" y1="'+Y(a[0])+'" x2="'+MW+'" y2="'+Y(a[0])+'"/><text class="gl" x="'+(MW-8)+'" y="'+(Y(a[0])-6)+'" text-anchor="end">'+a[1]+'</text>'});
+  R.forEach(function(r){
+    var d=r.p.map(function(k,i){return (i?'L':'M')+X(P[k][2]).toFixed(1)+' '+Y(P[k][1]).toFixed(1)}).join(' ');
+    o+='<path class="route '+r.k+'" data-r="'+r.id+'" pathLength="1" d="'+d+'"/>';
+  });
+  Object.keys(P).forEach(function(k){
+    var q=P[k],x=X(q[2]),y=Y(q[1]);
+    o+='<circle class="port" data-p="'+k+'" cx="'+x+'" cy="'+y+'" r="8"/><text class="pl" data-p="'+k+'" x="'+(x+q[4])+'" y="'+(y+q[5])+'" text-anchor="'+q[3]+'">'+q[0]+'</text>';
+  });
+  svg.innerHTML=o;
+  var list=document.getElementById('rlist'),btn='<button type="button" id="r-all" data-r="" aria-pressed="true"><small>5 rute</small>Semua rute</button>';
+  R.forEach(function(r){btn+='<button type="button" id="r-'+r.id+'" data-r="'+r.id+'" aria-pressed="false"><small>'+r.l+'</small>'+r.p.map(function(k){return P[k][0]}).join(' → ')+'</button>'});
+  list.innerHTML=btn;
+  function pick(id){
+    var act=null;R.forEach(function(r){if(r.id===id)act=r});
+    list.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-r')===id?'true':'false')});
+    svg.querySelectorAll('.route').forEach(function(p){
+      var me=p.getAttribute('data-r')===id;
+      p.classList.remove('on');
+      p.classList.toggle('dim',!!act&&!me);
+      if(me){void p.getBBox();p.classList.add('on')}
+    });
+    svg.querySelectorAll('[data-p]').forEach(function(e){e.classList.toggle('dimp',!!act&&act.p.indexOf(e.getAttribute('data-p'))<0)});
+  }
+  list.addEventListener('click',function(e){var b=e.target.closest('button');if(b)pick(b.getAttribute('data-r'))});
+
+  /* ---------- Armada, 1 kotak = 100 TEU ---------- */
+  var F=[["KM Tahan Angin 1",600,2002],["KM Tahan Angin 2",850,2006],["KM Samudra Teguh",1000,2010],["KM Bahari Kokoh",1000,2011],["KM Layar Perkasa",1200,2014],["KM Ombak Tenang",1200,2015]];
+  var col=['--c1','--c2','--c3','--c4'],out='',cn=0;
+  F.forEach(function(s){
+    var full=Math.floor(s[1]/100),half=s[1]%100>=50,b='';
+    for(var i=0;i<full;i++)b+='<i style="background-color:var('+col[(cn++*3+i)%4]+')"></i>';
+    if(half)b+='<i class="half" style="background-color:var('+col[(cn++*3)%4]+')"></i>';
+    out+='<div class="ship"><div><b>'+s[0]+'</b><span class="yr">Dibuat '+s[2]+'</span></div><div class="stack" aria-hidden="true">'+b+'</div><div class="cap">'+s[1].toLocaleString('id-ID')+' TEU</div></div>';
+  });
+  document.getElementById('fleet').innerHTML=out;
+
+  /* ---------- Bendera isyarat ---------- */
+  var RED='#C8202F',BLU='#124E9C',YEL='#F5C518',WHT='#FFFFFF',BLK='#111111';
+  function rect(x,y,w,h,c){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+c+'"/>'}
+  var FL={
+    T:rect(0,0,20,40,RED)+rect(20,0,20,40,WHT)+rect(40,0,20,40,BLU),
+    A:rect(0,0,30,40,WHT)+'<path d="M30 0H60L45 20L60 40H30Z" fill="'+BLU+'"/>',
+    H:rect(0,0,30,40,WHT)+rect(30,0,30,40,RED),
+    I:rect(0,0,60,40,YEL)+'<circle cx="30" cy="20" r="11" fill="'+BLK+'"/>',
+    G:[0,1,2,3,4,5].map(function(i){return rect(i*10,0,10,40,i%2?BLU:YEL)}).join('')
+  };
+  var chk='';for(var a=0;a<4;a++)for(var c=0;c<4;c++)chk+=rect(c*15,a*10,15,10,(a+c)%2?WHT:BLU);FL.N=chk;
+  var fh='';'TAHAN ANGIN'.split('').forEach(function(ch){
+    if(ch===' '){fh+='<span class="sp"></span>';return}
+    fh+='<span><svg viewBox="0 0 60 40" aria-hidden="true">'+FL[ch]+'</svg>'+ch+'</span>';
+  });
+  document.getElementById('flags').innerHTML=fh;
+
+  /* ---------- Salin kontak ---------- */
+  document.querySelectorAll('.copy').forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.getAttribute('data-t')),txt=el.textContent;
+      function done(m){b.textContent=m;setTimeout(function(){b.textContent='Salin'},1600)}
+      function pickText(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r);done('Terpilih')}
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){done('Disalin')}).catch(pickText)}else pickText();
+    });
+  });
+})();
+</script>
+</body>
+</html>
